@@ -36,12 +36,18 @@ buttonActive.onclick = function(){
 var mail = document.querySelector(".mail")
 var slider3 = document.querySelector(".slider3")
 var closeSlider3 = document.querySelector(".fa-xmark")
-mail.onclick = function(){
-    slider3.classList.add("active")
-}
-closeSlider3.addEventListener('click', function(){
-    slider3.classList.remove('active')
-})
+mail.onclick = function () {
+    // reset để lần mở sau animation chạy lại từ đầu
+    slider3.classList.remove("play");
+    void slider3.offsetWidth; // force reflow
+    slider3.classList.add("active");
+    slider3.classList.add("play");
+};
+
+closeSlider3.addEventListener("click", function () {
+    slider3.classList.remove("active");
+    slider3.classList.remove("play");
+});
 
 
 // ------audio------------
